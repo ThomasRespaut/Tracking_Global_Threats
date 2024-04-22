@@ -8,6 +8,8 @@ import requests
 from sentence_transformers import SentenceTransformer, util
 import openai
 
+from .secrets import open_ai_key
+
 def get_resume(question, information, language):
     message = [
         {
@@ -18,7 +20,7 @@ def get_resume(question, information, language):
             "content": f"Question : {question}, Information : {information}"
         }
     ]
-    openai.api_key = "sk-proj-6Y918fDhPBNiVk7MCqQuT3BlbkFJK0f8Isntz6hwxMsmSdSg"
+    openai.api_key = open_ai_key
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -41,7 +43,7 @@ def give_title(resume, language):
             "content": f"Resume Content: {resume}"
         }
     ]
-    openai.api_key = "sk-proj-6Y918fDhPBNiVk7MCqQuT3BlbkFJK0f8Isntz6hwxMsmSdSg"
+    openai.api_key = open_ai_key
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",

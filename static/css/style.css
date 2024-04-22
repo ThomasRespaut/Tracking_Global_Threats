@@ -1,0 +1,329 @@
+:root{
+    --blue : #014990;
+    --black_blue : #020617;
+}
+
+body{
+    background: white;
+    margin : 1vh 1vw;
+    padding : 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    /* Autres styles */
+}
+
+
+menu{
+    background: var(--blue);
+    margin : 0;
+    width: 100%;
+    height: 5vh;
+}
+
+menu ul{
+    display: flex;
+    flex-direction: row;
+    gap : 1vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.article_search{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin: 2vh auto;
+    padding : 2vh 2vw;
+}
+
+.article_form{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.short_form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#search_article{
+    width: 13vw;
+    border-radius: 20px 0 0 20px;
+    border : 5px solid var(--blue);
+    height: 3vh;
+    font-size: large;
+    text-align: center;
+}
+
+#search_article_submit{
+    border-radius: 0 20px 20px 0;
+    border : 5px solid var(--blue);
+    height: 4vh;
+    background-color: var(--blue);
+    width: 5vw;
+    color: white;
+    font-size: large;
+}
+
+.breaking_news{
+    background-color: steelblue;
+    width: 80vw;
+    height: 50vh;
+    margin : auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+ul{
+    list-style-type: none;
+}
+
+#map { height: 400px; }
+
+.articles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    border: var(--black_blue) 10px solid;
+    padding: 2vh 2vw;
+    border-radius: 10px;
+    width: 91vw;
+    background-color: var(--black_blue);
+}
+
+.articles-grid .row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.articles-grid .col {
+    width: calc(33.33% - 3vw);
+    margin-left: 2vw;
+    margin-bottom: 20px;
+    height: 40vh;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.articles-grid .col:last-child {
+    margin-right: 2vw;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.post_image img {
+    height: 23vh;
+    width: 27.35vw;
+    border-radius: 10px 10px 0 0;
+}
+
+.post_text{
+    padding: 1vh 1vw;
+    max-height: 15vh;
+    height: 15vh;
+    overflow-y: auto;
+}
+
+.post_text a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post_text p {
+    color: #666;
+    margin-top: 10px;
+}
+
+.more_articles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black_blue);
+    color: white;
+}
+
+.more_articles form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap : 2vw;
+}
+
+.more_articles form select,
+.more_articles form input[type="submit"]{
+    background-color: var(--blue);
+    color: white;
+    font-family: "Roboto Light", "sans-serif";
+    text-align: center;
+    padding : 0.5vh 0.5vw;
+    font-size: 14px;
+    height: 4vh;
+    width: 7vw;
+}
+
+.get_resume{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    margin: 0 auto;
+    padding : 2vh 2vw;
+    border-radius: 15px;
+    color : white;
+    font-size: 2em;
+}
+
+.get_resume .part1{
+    display: flex;
+    flex-direction: row;
+}
+.resume{
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    gap: 3vw;
+    align-items: center;
+    justify-content: center;
+    width: 70vh;
+}
+
+ .get_resume form{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1vh 1vw 1vh 0;
+     color: var(--black_blue);
+}
+
+.get_resume form .label {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    margin-top: 2vh;
+    align-items: center;
+}
+
+.get_resume form .label label {
+    width: 5vw; /* Ajuste la largeur des labels */
+    text-align: right; /* Aligne le texte des labels à droite */
+}
+
+.get_resume form .label input[type="text"],
+.get_resume form .label select {
+    width: 10vw; /* Ajuste la largeur des champs de saisie */
+    height: 3vh;
+}
+
+.get_resume form input[type="submit"]{
+    margin: 2vh auto;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--blue);
+    border : none;
+    font-size: 14px;
+}
+
+.resume_content{
+    margin : 5vh auto 3vh auto;
+    font-size: 0.8em;
+    line-height: 1.4;
+    font-weight: bold;
+    background-color: var(--black_blue);
+    color : white;
+    padding : 2vh 2vw;
+    border-top : 5px solid white;
+    text-align: justify;
+}
+
+.resume_content h1{
+    margin : 5vh auto;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight : 1000;
+}
+
+
+.label{
+      font-size: large;
+        gap: 1vw;
+}
+
+
+.form_articles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black_blue);
+    color : white;
+}
+
+.form_articles h1{
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 1000;
+}
+
+.long_form{
+    display: flex;
+    margin: 2vh 2vw;
+    height: 8vh;
+    color: var(--black_blue);
+    justify-content: center;
+    gap: 1.5vw;
+    align-items: center;
+}
+
+.long_form .label input[type="number"],
+.long_form .label select,
+.long_form .label input[type="text"],
+.long_form .label input[type="date"]{
+    background-color: var(--blue);
+    border-radius: 10px;
+    height: 2.5vh;
+    border: none var(--blue);
+    margin: 0;
+    font-size: 16px;
+    padding: 1vh 1vw;
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
+    text-align: center;
+}
+
+.long_form .label select{
+    height: 4vh;
+}
+
+.long_form input[type="submit"]
+{
+    height: 4vh;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--blue);
+    border : none;
+    font-size: 14px;
+}

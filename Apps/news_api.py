@@ -3,9 +3,8 @@ import json
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-#api_key = "a82a86471a4b470ebc6a30d9093c526e"
-#api_key = "ee1133eafc0d44a285a99145891e4256"
-api_key = '13ec9f4822ec4f2c949924d0fc2b3af0'
+from .secrets import api_key_news_url
+api_key = api_key_news_url
 
 def get_content(search,date_start,date_end,api_key):
     api_url = f"https://newsapi.org/v2/everything?qInTitle={search}&from={date_start}&to={date_end}&sortBy=popularity&apiKey={api_key}"

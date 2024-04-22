@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Tracking Global Threats</title>
+</head>
+<body>
+
+    <div class="more_form">
+        <form method="post" id="more_form">
+            {% csrf_token %}
+            <div class="long_form">
+
+                <div class="label">
+                    <label>Query :</label>
+                    <input type="text" name="query" value="{{ search_query }}">
+                </div>
+
+               <div class="label">
+                    <label>From:</label>
+                    <input type="date" name="start" value="{{ start }}" min="{{ min }}" max="{{ max }}">
+                </div>
+
+                <div class="label">
+                    <label>To:</label>
+                    <input type="date" name="end" value="{{ end }}" min="{{ min }}" max="{{ max }}">
+                </div>
+
+                <!--
+                Autres champs de formulaire
+                -->
+
+                <div class="label">
+                    <label>Sort by:</label>
+                    <select name="sort_by">
+                        <option value="relevancy" {% if sort_by == 'relevancy' %}selected{% endif %}>Relevancy</option>
+                        <option value="popularity" {% if sort_by == 'popularity' %}selected{% endif %}>Popularity</option>
+                        <option value="publishedAt" {% if sort_by == 'publishedAt' %}selected{% endif %}>Published Date</option>
+                    </select>
+                </div>
+
+
+                <input type="submit" name="search" value="Search">
+            </div>
+        </form>
+    </div>
+
+
+<section class="form_articles">
+        <div class="get_resume">
+            <div class ="resume">
+                <h1>Resume your news</h1>
+                <form id="resume_form" method="post">
+            {% csrf_token %}
+            <div class="label">
+                <label>Topic:</label>
+                <input type="text" name="user_sentence">
+            </div>
+
+            <div class="label">
+                <label>Language:</label>
+                <select name="language" id="languageSelect">
+                    <option>English</option>
+                    <option>French</option>
+                    <option>Russian</option>
+                    <option>Chinese</option>
+                    <option>Spanish</option>
+                    <option>Portuguese</option>
+                    <option>German</option>
+                    <option>Japanese</option>
+                    <option>Arabic</option>
+                    <option>Korean</option>
+                    <option>Italian</option>
+                    <option>Dutch</option>
+                    <option>Turkish</option>
+                    <option>Polish</option>
+                    <option>Swedish</option>
+                    <option>Indonesian</option>
+                    <option>Czech</option>
+                    <option>Thai</option>
+                    <option>Greek</option>
+                    <option>Danish</option>
+                    <option>Hungarian</option>
+                    <option>Finnish</option>
+                    <option>Norwegian</option>
+                    <option>Hebrew</option>
+                    <option>Ukrainian</option>
+                    <option>Slovak</option>
+                    <option>Bulgarian</option>
+                    <option>Romanian</option>
+                    <option>Lithuanian</option>
+                </select>
+            </div>
+
+            <script>
+                // Récupère le select
+                var select = document.getElementById("languageSelect");
+                // Trie les options par ordre alphabétique
+                Array.from(select.options)
+                     .sort((a, b) => a.text.localeCompare(b.text))
+                     .forEach(option => select.add(option));
+            </script>
+
+
+            <div>
+                <input type="submit" name="resume" value="Resume">
+            </div>
+        </form>
+            </div>
+
+
+        {% if resume %}
+            <div class="resume_content">
+                <h1>{{ title }}</h1>
+                <p>
+                    {{ resume }}
+
+                </p>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<div class="more_articles">
+    <h1>{{ articles|length }} more articles...</h1>
+    <form method="post">
+        {% csrf_token %}
+            <select name="language_translate" id="languageSelect">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="ru">Russian</option>
+                <option value="zh">Chinese</option>
+                <option value="es">Spanish</option>
+                <option value="pt">Portuguese</option>
+                <option value="de">German</option>
+                <option value="ja">Japanese</option>
+                <option value="ar">Arabic</option>
+                <option value="ko">Korean</option>
+                <option value="it">Italian</option>
+                <option value="nl">Dutch</option>
+                <option value="tr">Turkish</option>
+                <option value="pl">Polish</option>
+                <option value="sv">Swedish</option>
+                <option value="id">Indonesian</option>
+                <option value="cs">Czech</option>
+                <option value="th">Thai</option>
+                <option value="el">Greek</option>
+                <option value="da">Danish</option>
+                <option value="hu">Hungarian</option>
+                <option value="fi">Finnish</option>
+                <option value="no">Norwegian</option>
+                <option value="he">Hebrew</option>
+                <option value="uk">Ukrainian</option>
+                <option value="sk">Slovak</option>
+                <option value="bg">Bulgarian</option>
+                <option value="ro">Romanian</option>
+                <option value="lt">Lithuanian</option>
+            </select>
+
+            <input type="submit" name="translate" value="Translate">
+
+    </form>
+
+    <div class="articles-grid">
+        {% for article in articles %}
+            {% if forloop.counter0|divisibleby:3 %}
+                <div class="row">
+            {% endif %}
+
+            <div class="col">
+                <div class="post_image">
+                    <img src="{{ article.5 }}" alt="Description de l'image" width="400" height="200">
+                </div>
+                <div class="post_text">
+                    <a href="{{ article.4 }}">{{ article.2 }}</a>
+                    <p>{{ article.3 }}</p>
+                </div>
+            </div>
+
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
