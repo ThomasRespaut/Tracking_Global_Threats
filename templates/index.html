@@ -1,10 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Tracking Global Threats</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
+
 <body>
 
+<main>
+    <section class="article_search">
+        <form class="article_form" method="post">
+            {% csrf_token %}
+            <input id="search_article" name="search_query" type="text">
+            <input type="submit" id="search_article_submit" name="search" value="Search">
+    </form>
+    </section>
+
+    <div id="map">
+        {{ map_html|safe }}
+    </div>
+    
+</main>
+<footer>
+</footer>
 </body>
 </html>
