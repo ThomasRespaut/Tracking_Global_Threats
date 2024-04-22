@@ -7,9 +7,7 @@ from io import BytesIO
 import requests
 from sentence_transformers import SentenceTransformer, util
 import openai
-
 from .secrets import open_ai_key
-
 def get_resume(question, information, language):
     message = [
         {
