@@ -7,7 +7,7 @@ from io import BytesIO
 import requests
 from sentence_transformers import SentenceTransformer, util
 import openai
-open_ai_key = ""
+key = ""
 def get_resume(question, information, language):
     message = [
         {
@@ -18,7 +18,7 @@ def get_resume(question, information, language):
             "content": f"Question : {question}, Information : {information}"
         }
     ]
-    openai.api_key = open_ai_key
+    openai.api_key = key
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -41,7 +41,7 @@ def give_title(resume, language):
             "content": f"Resume Content: {resume}"
         }
     ]
-    openai.api_key = open_ai_key
+    openai.api_key = key
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
