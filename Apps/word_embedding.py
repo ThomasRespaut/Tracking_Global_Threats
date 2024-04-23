@@ -7,12 +7,15 @@ from io import BytesIO
 import requests
 from sentence_transformers import SentenceTransformer, util
 import openai
+
 key = ""
+
 def get_resume(question, information, language):
     message = [
         {
             "role": "system",
-            "content": f"You are an intelligent virtual assistant designed to present articles with great precision and a lot of sentence. You will need to respond in {language}. The user provides you with a question on a specific topic and information from articles. You should use this data to formulate an informative and coherent answer. Remember to add sources (in different languages), publication dates of the articles and relevant details to make the answer as complete as possible."},
+            "content": f"You are an intelligent virtual assistant designed to present articles with great precision and a lot of sentence. You will need to respond in {language}. The user provides you with a question on a specific topic and information from articles. You should use this data to formulate an informative and coherent answer. Remember to add sources (in different languages), publication dates of the articles and relevant details to make the answer as complete as possible."
+        },
         {
             "role": "user",
             "content": f"Question : {question}, Information : {information}"
@@ -78,10 +81,6 @@ def word_embedding(articles, user_sentence):
 
     return articles_list[:20]
 
-from langdetect import detect
-from googletrans import Translator
-
-
 def translate_articles(articles, lg):
     translated_articles = []
     for article in articles:
@@ -109,48 +108,5 @@ def translate_articles(articles, lg):
         else:
             translated_articles.append(article)
 
-    #print(f"articles : {translated_articles}")
     return translated_articles
 
-
-''' language = "english"
-resume = get_resume(user_sentence, information, language)
-print(resume)
-
-directory = f"Images//{user_sentence}"
-
-if not os.path.exists(directory):
-    os.makedirs(directory)
-
-for title, source, url, image in articles_list:
-    print("-" * 50)
-    print(f"Titre: {title}")
-    print(f"Source: {source},\tURL: {url}")
-
-    # Détecter la langue
-    language = detect(title)
-    if language != 'fr':
-        # Traduction nécessaire
-        try:
-            translator = Translator()
-            translated_text = translator.translate(title, dest='fr').text
-            print("Langue détectée:", language, "\tTexte traduit:", translated_text)
-        except Exception as e:
-            print("Une erreur s'est produite lors de la traduction:", e)
-
-    try:
-        response = requests.get(image)
-        img = Image.open(BytesIO(response.content))
-        # img.show()
-
-        file_path = f"{directory}//{title}.png"
-        if not os.path.exists(file_path):
-            img.save(file_path)
-            # Confirmer que l'image est enregistrée
-            print(f"Image enregistrée à {file_path}")
-        else:
-            print(f"L'image existe déjà.")
-    except Exception as e:
-        print("Une erreur s'est produite lors du téléchargement des images:", e)
-
-print("-" * 50)'''
